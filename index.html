@@ -1,0 +1,45 @@
+var books = [
+    {title: "I Know Why the Caged Bird Sings", author: "A", color:0, stars: 4, rec: 0},
+    {title: "HAHA", author: "B", color:1, stars: 3, rec: 1},
+    {title: "LALA", author: "C", color:2, stars: 3, rec:1},
+    {title: "I Know Why the Caged Bird Sings", author: "A", color:0, stars: 4, rec: 0},
+    {title: "HAHA", author: "B", color:1, stars: 3, rec: 1},
+    {title: "LALA", author: "C", color:2, stars: 3, rec:1},
+    {title: "I Know Why the Caged Bird Sings", author: "A", color:0, stars: 4, rec: 0},
+    {title: "HAHA", author: "B", color:1, stars: 3, rec: 1},
+    {title: "LALA", author: "C", color:2, stars: 3, rec:1},
+];
+
+// draw shelf
+for(var shelfNum = 0; shelfNum < (((books.length - books.length % 3))/3) ; shelfNum++){
+fill(173, 117, 33);
+rect(0, 120+120*shelfNum, width, 10);
+}
+
+//color storage
+var colorRed = color(255, 0, 0);
+var colorOrange = color(255, 255, 0);
+var colorBlue = color(0, 255, 255);
+
+// draw multiple books
+for(var bookNum = 0; bookNum < books.length; bookNum++){
+if(books[bookNum].color === 0 ){
+    fill(colorRed);
+}else if(books[bookNum].color === 1){
+    fill(colorOrange);
+}else{
+    fill(colorBlue);
+}
+
+
+rect(10 + 120 * bookNum - (((bookNum - bookNum % 3))/3) * 360, 20 + (((bookNum - bookNum % 3))/3) * 120, 90, 100);
+fill(0, 0, 0);
+text(books[bookNum].title, 15+120*bookNum - (((bookNum - bookNum % 3))/3) * 360, 29 + (((bookNum - bookNum % 3))/3) * 120, 70, 100);
+text(books[bookNum].author, 15+120*bookNum - (((bookNum - bookNum % 3))/3) * 360, 90 + (((bookNum - bookNum % 3))/3) * 120, 70, 100);
+if(books[bookNum].rec === 1){
+image(getImage("creatures/Hopper-Happy"), 15+120*bookNum - (((bookNum - bookNum % 3))/3) * 360, 75 + (((bookNum - bookNum % 3))/3) * 120, 10, 10);
+}else{
+image(getImage("creatures/OhNoes"), 15+120*bookNum - (((bookNum - bookNum % 3))/3) * 360, 75 + (((bookNum - bookNum % 3))/3) * 120, 10, 10);}
+for (var i = 0; i < books[bookNum].stars; i++) {
+    image(getImage("cute/Star"), 13 + i * 20 + 120 * bookNum - (((bookNum - bookNum % 3))/3) * 360, 90 + (((bookNum - bookNum % 3))/3) * 120, 20, 30);
+}}
